@@ -1,5 +1,5 @@
 # EPL18
-EPL 2018 Data를 활용한 스터디용 프로젝트 (작업중)
+EPL 2018 Data를 활용한 토이 프로젝트 (작업중)
 
 ## 기술
 * Firebase : Firestore, Functions, Hosting, Storage
@@ -12,11 +12,14 @@ EPL 2018 Data를 활용한 스터디용 프로젝트 (작업중)
 * [Score Board](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?calendar=blacklist&dates=20180901)
 * [Teams](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349)
 
+## NPM Global
+`sudo npm install -g firebase-tools`
+
 ## Scripts
 * 로그인
-  > firebase login
+`firebase login`
 * 배포
-  > firebase deploy
+`firebase deploy`
 
 ## Memo
 * 사내 방화벽 환경에서는 firebase 접근간 인증 오류 발생
