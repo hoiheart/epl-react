@@ -6,7 +6,9 @@
   "functions": {
     "source": "dist/functions",
     "predeploy": [
-      "npm run build"
+      "npm run build",
+      "npm run copy",
+      "npm run ins"
     ]
   },
   "hosting": {

@@ -4,13 +4,15 @@
     "dev": "next src/app -- -p 5000",
     "build": "rimraf dist && next build src/app && tsc --project src/functions",
     "lint": "tslint -c ./app/tslint.json ./app/**/*.tsx",
+    "copy": "cpx \"*{package.json,package-lock.json}\" dist/functions -C && cpx \"src/public/*\" dist/public -C",
+    "ins": "cd dist/functions && npm i && npm audit fix",
     "serve": "npm run build && firebase serve --only functions",
     "deploy": "firebase deploy --only functions"
   },
   "engines": {
     "node": "10"
   },
-  "main": "lib/index.js",
+  "main": "index.js",
   "dependencies": {
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
