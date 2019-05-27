@@ -7,13 +7,16 @@ EPL 2018 Data를 활용한 토이 프로젝트 (작업중)
 * React
 * Next(SSR)
 
+## Next 동일 환경 Example
+[Github](https://github.com/zeit/next.js/tree/master/examples/with-firebase-hosting-and-typescript)
+
 ## API Source
 * [ESPN's hidden API Document](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b)
 * [Score Board](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?calendar=blacklist&dates=20180901)
 * [Teams](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349)
 
 ## NPM Global
-`sudo npm install -g firebase-tools`
+`sudo npm install -g firebase-tools tslint typescript`
 
 ## Scripts
 * 로그인
