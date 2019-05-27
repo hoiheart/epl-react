@@ -5,10 +5,7 @@ EPL 2018 Data를 활용한 토이 프로젝트 (작업중)
 * Firebase : Firestore, Functions, Hosting, Storage
 * Typescript
 * React
-* Next(SSR)
-
-## Next 동일 환경 Example
-[Github](https://github.com/zeit/next.js/tree/master/examples/with-firebase-hosting-and-typescript)
+* Next(SSR) : [참고](https://github.com/zeit/next.js/tree/master/examples/with-firebase-hosting-and-typescript)
 
 ## API Source
 * [ESPN's hidden API Document](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b)
