@@ -16,9 +16,13 @@ EPL 2018 Data를 활용한 토이 프로젝트 (작업중)
 `sudo npm install -g firebase-tools tslint typescript`
 
 ## Scripts
-* 로그인
+* Login
 `firebase login`
-* 배포
+* Dev (Next)
+`npm run dev`
+* Build
+`npm run build`
+* Deploy
 `firebase deploy`
 
 ## Memo
