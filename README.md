@@ -1,6 +1,6 @@
 # EPL18
 * EPL 2018 Data를 활용한 토이 프로젝트 (작업중)  
-* React Hooks를 활용한 함수형 프로그래밍 및 Typescript 스터디를 목적으로 SEO 지원 및 간결한 배포가 가능한 Next + Firebase 조합으로 구현
+* React Hooks를 활용한 함수형 프로그래밍, Typescript, React TDD 스터디를 목적으로 SEO 지원 및 간결한 배포가 가능한 Next + Firebase 조합으로 구현
 
 ## 기술
 * Firebase : Firestore, Functions, Hosting, Storage
