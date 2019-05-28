@@ -11,8 +11,11 @@
 ## API Source
 * [ESPN's hidden API Document](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b)
 * [Score Board](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?calendar=blacklist&dates=20180901)
-* [Teams](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349)
+* [Standings](http://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings)
 * [Statistics](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/statistics)
+* [Teams](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349)
+* [Roaster](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349/roster)
+* [Player](http://www.espnfc.com/player/34949/wilfredo-caballero?season=2011&xhr=1)
 
 ## NPM Global
 `sudo npm install -g firebase-tools tslint typescript`
@@ -34,4 +37,4 @@
   strict-ssl=false
   NODE_TLS_REJECT_UNAUTHORIZED=0
   ```
-* API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 public에서 파일로 관리
+* API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 public 폴더에서 파일로 관리하거나 espn API를 직접 호출
