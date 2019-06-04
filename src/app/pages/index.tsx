@@ -1,13 +1,24 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-import App from '../components/App';
+import Layout from '../components/Layout';
 
-const Index = () => {
+const Index: React.FunctionComponent = () => {
   return (
-    <App>
-      <h1>Index</h1>
-    </App>
-  )
-}
+    <Layout title="Home | EPL18">
+      <h1>Home</h1>
+    </Layout>
+  );
+};
 
-export default Index;
+// Index.getInitialProps = async ({ Component, ctx }) => {
+//   let initialProps = {};
+
+//   if (Component.getInitialProps) {
+//     initialProps = await Component.getInitialProps({ ctx });
+//   }
+
+//   return { ...initialProps };
+// }
+
+export default connect()(Index);

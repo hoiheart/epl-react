@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import App from '../components/App';
+import Layout from '../components/Layout';
 
-const Team = () => {
+const Team: React.FunctionComponent = () => {
   return (
-    <App>
+    <Layout title="Home | EPL18">
       <h1>Team</h1>
-    </App>
-  )
-}
+    </Layout>
+  );
+};
 
 export default Team;
