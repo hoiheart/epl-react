@@ -11,19 +11,19 @@ import withReduxSaga from 'next-redux-saga';
 
 import createStore from '../saga/store';
 
-interface AppProps {
-  reduxStore?: any;
+interface IApp {
+  store?: any;
 }
 
-class MyApp extends App<AppProps> {
-  public static async getInitialProps ({ Component, ctx }) {
-    let pageProps = {}
+class MyApp extends App<IApp> {
+  public static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps({ ctx })
+      pageProps = await Component.getInitialProps({ ctx });
     }
 
-    return { pageProps }
+    return { pageProps };
   }
 
   public render() {

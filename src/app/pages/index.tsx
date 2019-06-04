@@ -1,24 +1,24 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 
 import Layout from '../components/Layout';
 
-const Index: React.FunctionComponent = () => {
+const Index = ({ data }) => {
+  const count = useSelector((state) => state.count, shallowEqual);
+
+  console.log(data);
+
   return (
     <Layout title="Home | EPL18">
-      <h1>Home</h1>
+      <h1>Home{count}</h1>
     </Layout>
   );
 };
 
-// Index.getInitialProps = async ({ Component, ctx }) => {
-//   let initialProps = {};
+Index.getInitialProps = async (props) => {
+  const res = await fetch('http://localhost:5000/static/data/teams/331.json');
+  const json = await res.json();
+  return { data : json };
+};
 
-//   if (Component.getInitialProps) {
-//     initialProps = await Component.getInitialProps({ ctx });
-//   }
-
-//   return { ...initialProps };
-// }
-
-export default connect()(Index);
+export default Index;

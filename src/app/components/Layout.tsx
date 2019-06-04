@@ -2,11 +2,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import * as React from 'react';
 
-interface Props {
+interface ILayout {
   title?: string;
 }
 
-const Layout: React.FunctionComponent<Props> = ({ children, title = 'EPL18' }) => (
+const Layout: React.FunctionComponent<ILayout> = ({ children, title = 'EPL18' }) => (
   <>
     <Head>
       <title>{title}</title>
