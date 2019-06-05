@@ -7,15 +7,14 @@ import { getStaticPath } from '../utils';
 import Layout from '../components/Layout';
 
 interface IIndex {
-  standings: any;
+  standings?: [];
 }
 
 const Index: NextFunctionComponent<IIndex> = ({ standings }) => {
   // const count = useSelector((state) => state.count, shallowEqual);
-  const list: [] = standings.children[0].standings.entries;
   return (
     <Layout title="Home | English Premier League 2018">
-      {list.length &&
+      {standings.length &&
       <>
         <h2>Standings</h2>
         <div className="standings">
@@ -35,7 +34,7 @@ const Index: NextFunctionComponent<IIndex> = ({ standings }) => {
               </tr>
             </thead>
             <tbody>
-              {list.map((v, index) => (
+              {standings.map((v, index) => (
               <tr key={index} style={{'backgroundColor': v.note ? v.note.color : false}}>
                 <td className="rank">{v.stats[7].displayValue}</td>
                 <td className="name">
@@ -66,15 +65,17 @@ const Index: NextFunctionComponent<IIndex> = ({ standings }) => {
 };
 
 Index.getInitialProps = async (props) => {
-  let res = {};
+  let result: IIndex = {
+    standings: []
+  };
 
   try {
-  const resStandings = await fetch(`${getStaticPath()}/data/standings/standings.json`);
-  const jsonStandings = await resStandings.json();
-    res = { ...res, standings: jsonStandings };
+    const res = await fetch(`${getStaticPath()}/data/standings/standings.json`);
+    const json = await res.json();
+    result = { ...res, standings: json.children[0].standings.entries };
   } catch(e) {}
 
-  return res;
+  return result;
 };
 
 export default Index;
