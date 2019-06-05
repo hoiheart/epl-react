@@ -3,10 +3,10 @@ import Link from 'next/link';
 import * as React from 'react';
 
 interface ILayout {
-  title?: string;
+  title: string;
 }
 
-const Layout: React.FunctionComponent<ILayout> = ({ children, title = 'EPL18' }) => (
+const Layout: React.FunctionComponent<ILayout> = ({ children, title = 'English Premier League 2018' }) => (
   <>
     <Head>
       <title>{title}</title>
@@ -16,12 +16,17 @@ const Layout: React.FunctionComponent<ILayout> = ({ children, title = 'EPL18' })
       <meta property="og:title" content={title} />
     </Head>
     <header>
+      <h1>English Premier League 2018</h1>
       <nav>
         <Link href='/'><a>Home</a></Link>
-        <Link href='/team'><a>Team</a></Link>
+        <Link href='/teams'><a>Teams</a></Link>
+        <Link href='/fixtures'><a>Fixtures</a></Link>
+        <Link href='/stats'><a>Stats</a></Link>
       </nav>
     </header>
-    {children}
+    <main>
+      {children}
+    </main>
   </>
 );
 

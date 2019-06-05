@@ -12,7 +12,7 @@ import withReduxSaga from 'next-redux-saga';
 import createStore from '../saga/store';
 
 interface IApp {
-  store?: any;
+  store?: {};
 }
 
 class MyApp extends App<IApp> {
