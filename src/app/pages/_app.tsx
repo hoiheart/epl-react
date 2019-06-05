@@ -11,6 +11,8 @@ import withReduxSaga from 'next-redux-saga';
 
 import createStore from '../saga/store';
 
+import '../scss/style.scss';
+
 interface IApp {
   store?: {};
 }

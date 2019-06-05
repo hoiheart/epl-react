@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Link from 'next/link';
 // import { shallowEqual, useSelector } from 'react-redux';
 import { NextFunctionComponent } from 'next';
@@ -7,15 +7,15 @@ import { getStaticPath } from '../utils';
 import Layout from '../components/Layout';
 
 interface IIndex {
-  data: any;
+  standings: any;
 }
 
-const Index: NextFunctionComponent<IIndex> = ({ data }) => {
+const Index: NextFunctionComponent<IIndex> = ({ standings }) => {
   // const count = useSelector((state) => state.count, shallowEqual);
-  const standings: [] = data.children[0].standings.entries;
+  const list: [] = standings.children[0].standings.entries;
   return (
     <Layout title="Home | English Premier League 2018">
-      {standings.length &&
+      {list.length &&
       <>
         <h2>Standings</h2>
         <div className="standings">
@@ -35,11 +35,11 @@ const Index: NextFunctionComponent<IIndex> = ({ data }) => {
               </tr>
             </thead>
             <tbody>
-              {standings.map((v, index) => (
+              {list.map((v, index) => (
               <tr key={index} style={{'backgroundColor': v.note ? v.note.color : false}}>
                 <td className="rank">{v.stats[7].displayValue}</td>
                 <td className="name">
-                  <Link href={`/teams/${v.team.id}`}>
+                  <Link href={`/teams?id=${v.team.id}`}>
                     <a>
                       <img src={v.team.logos[0].href} width="48" height="48" alt="" />
                       {v.team.displayName}
@@ -66,9 +66,15 @@ const Index: NextFunctionComponent<IIndex> = ({ data }) => {
 };
 
 Index.getInitialProps = async (props) => {
-  const res = await fetch(`${getStaticPath()}/data/standings/standings.json`);
-  const json = await res.json();
-  return { data : json };
+  let res = {};
+
+  try {
+  const resStandings = await fetch(`${getStaticPath()}/data/standings/standings.json`);
+  const jsonStandings = await resStandings.json();
+    res = { ...res, standings: jsonStandings };
+  } catch(e) {}
+
+  return res;
 };
 
 export default Index;

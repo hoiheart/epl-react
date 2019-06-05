@@ -1,0 +1,9 @@
+.teams {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  li {
+    flex: 0 0 20%;
+  }
+}
