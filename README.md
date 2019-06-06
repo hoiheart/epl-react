@@ -10,14 +10,15 @@ URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
 ## Completed List
 * 기술셋 픽스 및 환경 세팅
 * API 데이터 수급
-* 인덱스 출력
-* 팀, 팀 상세 정보 출력
+* 인덱스(순위 목록) 출력
+* 팀 목록, 팀 상세 정보 출력
 
 ## To Do List
-* 일정, 일정 상세 정보
-* 스탯 랭킹
-* 플레이어 정보
-* 디자인
+* **Firebase에서 데이터 서버사이드 렌더링이 안되는 이슈**
+* 일정 목록, 경기 상세 정보 출력
+* 선수 랭킹 출력
+* 선수 정보 출력
+* 디자인 (with Material)
 * TDD
 
 ## 기술
@@ -45,10 +46,10 @@ URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
 * 배포 : `firebase deploy`
 
 ## Memo
-* 사내 방화벽 환경에서는 firebase 접근간 인증 오류 발생
+* 방화벽 환경에서는 firebase 접근간 인증 오류 발생하는 경우가 있음
 * .npmrc에서 아래 설정 추가를 통해 CMD로 init 등 접근 관련 기능은 수행할 수 있지만 배포는 불가능
   ```
   strict-ssl=false
   NODE_TLS_REJECT_UNAUTHORIZED=0
   ```
-* API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 public 폴더에서 파일로 관리하거나 espn API를 직접 호출
+* API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 public 파일로 관리하거나 espn API(players)를 직접 호출
