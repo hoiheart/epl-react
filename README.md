@@ -1,6 +1,24 @@
 # EPL18
-* EPL 2018 Data를 활용한 토이 프로젝트 (작업중)  
+
+> **🚧 현재 진행중 프로젝트**
+
+URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
+
+* EPL 2018 Data를 활용한 토이 프로젝트
 * Typescript, React Hooks, TDD 등의 스터디를 목적으로 SEO 지원 및 간결한 배포가 가능한 NextJS + Firebase 조합으로 구현
+
+## Completed List
+* 기술셋 픽스 및 환경 세팅
+* API 데이터 수급
+* 인덱스 출력
+* 팀, 팀 상세 정보 출력
+
+## To Do List
+* 일정, 일정 상세 정보
+* 스탯 랭킹
+* 플레이어 정보
+* 디자인
+* TDD
 
 ## 기술
 * Firebase : Firestore, Functions, Hosting, Storage
@@ -21,14 +39,10 @@
 `sudo npm install -g firebase-tools typescript`
 
 ## Scripts
-* Firebase 로그인  
-`firebase login`
-* Next(Dev) Server 구동  
-`npm run dev`
-* 배포용 빌드  
-`npm run build`
-* 배포  
-`firebase deploy`
+* Firebase 로그인 : `firebase login`
+* Next(Dev) Server 구동 : `npm run dev`
+* 배포용 빌드 : `npm run build`
+* 배포 : `firebase deploy`
 
 ## Memo
 * 사내 방화벽 환경에서는 firebase 접근간 인증 오류 발생
