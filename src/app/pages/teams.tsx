@@ -1,7 +1,8 @@
-import React from 'react';
 import Link from 'next/link';
-// import { shallowEqual, useSelector } from 'react-redux';
 import { NextFunctionComponent } from 'next';
+import fetch from 'isomorphic-unfetch';
+import React from 'react';
+// import { shallowEqual, useSelector } from 'react-redux';
 import { getStaticPath } from '../utils';
 
 import Layout from '../components/Layout';

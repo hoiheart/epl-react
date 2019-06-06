@@ -2,7 +2,7 @@
   "name": "functions",
   "scripts": {
     "dev": "next src/app -- -p 5000",
-    "data": "cpx \"src/app/static/data/**/*.*\" dist/functions/next/static/data -C",
+    "data": "cpx \"src/app/static/**/*.*\" dist/public/static -C",
     "build": "rimraf dist && next build src/app && tsc --project src/functions && npm run data",
     "lint": "tslint -c ./app/tslint.json ./app/**/*.tsx",
     "copy": "cpx \"*{package.json,package-lock.json}\" dist/functions -C && cpx \"src/public/*\" dist/public -C",
