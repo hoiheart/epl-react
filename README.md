@@ -33,7 +33,7 @@ URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
 * [Standings](http://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings)
 * [Statistics](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/statistics)
 * [Teams](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349)
-* [Roaster](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349/roster)
+* [Roster](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349/roster)
 * [Player](http://www.espnfc.com/player/169532?xhr=1)
 
 ## NPM Global 설치
