@@ -10,14 +10,14 @@ URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
 ## Completed List
 * 기술셋 픽스 및 환경 세팅
 * API 데이터 수급
-* 인덱스(순위 목록) 출력
-* 팀 목록, 팀 상세 정보 출력
+* 인덱스(순위 목록) 메뉴
+* 팀 메뉴
+* 스탯 메뉴
 
 ## To Do List
 * ~~Firebase에서 데이터 서버사이드 렌더링이 안되는 이슈 : 요금제 변경으로 해결~~
-* 일정 목록, 경기 상세 정보 출력
-* 선수 랭킹 출력
-* 선수 정보 출력
+* 일정 메뉴
+* 선수 상세 정보
 * 디자인 (with Material)
 * TDD
 
@@ -34,7 +34,7 @@ URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
 * [Statistics](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/statistics)
 * [Teams](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349)
 * [Roaster](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349/roster)
-* [Player](http://www.espnfc.com/player/169532?season=2018&xhr=1)
+* [Player](http://www.espnfc.com/player/169532?xhr=1)
 
 ## NPM Global 설치
 `sudo npm install -g firebase-tools typescript`
