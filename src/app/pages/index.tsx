@@ -13,35 +13,57 @@ interface IIndex {
 
 const Index: NextFunctionComponent<IIndex> = ({ standings = [] }) => {
   // const count = useSelector((state) => state.count, shallowEqual);
-  const renderStandings = () => (
-    <>
-      <h2>Standings</h2>
-      <div className="standings">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col" className="rank">Rank</th>
-              <th scope="col" className="name">Team</th>
-              <th scope="col" className="gp">GP</th>
-              <th scope="col" className="win">W</th>
-              <th scope="col" className="draw">D</th>
-              <th scope="col" className="lose">L</th>
-              <th scope="col" className="point">P</th>
-              <th scope="col" className="gf">GF</th>
-              <th scope="col" className="ga">GA</th>
-              <th scope="col" className="gd">GD</th>
-            </tr>
-          </thead>
-          <tbody>
-            {renderStandingsList()}
-          </tbody>
-        </table>
-      </div>
-    </>
-  );
 
-  const renderStandingsList = () => (
-    standings.map((v: any, index) => (
+  return (
+    <Layout title="Home | English Premier League 2018">
+      {standings.length ? renderStandings({ standings }) : ''}
+    </Layout>
+  );
+};
+
+Index.getInitialProps = async () => {
+  let result: IIndex = {
+    standings: [],
+  };
+
+  try {
+    const res = await fetch(`${getStaticPath()}/data/standings/standings.json`);
+    const json = await res.json();
+    result = { ...res, standings: json.children[0].standings.entries };
+  } catch (e) {}
+
+  return result;
+};
+
+const renderStandings = ({ standings }) => (
+  <>
+    <h2>Standings</h2>
+    <div className="standings">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" className="rank">Rank</th>
+            <th scope="col" className="name">Team</th>
+            <th scope="col" className="gp">GP</th>
+            <th scope="col" className="win">W</th>
+            <th scope="col" className="draw">D</th>
+            <th scope="col" className="lose">L</th>
+            <th scope="col" className="point">P</th>
+            <th scope="col" className="gf">GF</th>
+            <th scope="col" className="ga">GA</th>
+            <th scope="col" className="gd">GD</th>
+          </tr>
+        </thead>
+        <tbody>
+          {renderStandingsList({ standings })}
+        </tbody>
+      </table>
+    </div>
+  </>
+);
+
+const renderStandingsList = ({ standings }) => (
+  standings.map((v: any, index) => (
     <tr key={index} style={{backgroundColor: v.note ? v.note.color : false}}>
       <td className="rank">{v.stats[7].displayValue}</td>
       <td className="name">
@@ -61,28 +83,7 @@ const Index: NextFunctionComponent<IIndex> = ({ standings = [] }) => {
       <td className="ga">{v.stats[5].displayValue}</td>
       <td className="gd">{v.stats[8].displayValue}</td>
     </tr>
-    ))
-  );
-
-  return (
-    <Layout title="Home | English Premier League 2018">
-      {standings.length ? renderStandings() : ''}
-    </Layout>
-  );
-};
-
-Index.getInitialProps = async () => {
-  let result: IIndex = {
-    standings: [],
-  };
-
-  try {
-    const res = await fetch(`${getStaticPath()}/data/standings/standings.json`);
-    const json = await res.json();
-    result = { ...res, standings: json.children[0].standings.entries };
-  } catch (e) {}
-
-  return result;
-};
+  ))
+);
 
 export default Index;
