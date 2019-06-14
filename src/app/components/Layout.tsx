@@ -20,7 +20,7 @@ const Layout: React.FunctionComponent<ILayout> = ({ children, title = 'English P
       <nav>
         <Link href='/'><a>Home</a></Link>
         <Link href='/teams'><a>Teams</a></Link>
-        <Link href='/fixtures'><a>Fixtures</a></Link>
+        <Link href='/fixtures'><a><del>Fixtures</del></a></Link>
         <Link href='/stats'><a>Stats</a></Link>
       </nav>
     </header>
