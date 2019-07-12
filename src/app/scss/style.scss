@@ -7,3 +7,18 @@
     flex: 0 0 20%;
   }
 }
+
+#feed-page {
+  #submenu, #feed {display: none !important;}
+  #feed-page-primary {
+    .meta, .meta + p {display: none !important;}
+    .games {display: none;}
+    .legend {display: none;}
+  }
+  select {display: none;}
+  a {
+    pointer-events: none;
+    text-decoration: none;
+    color: inherit;
+  }
+}

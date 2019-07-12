@@ -21,7 +21,6 @@ const ModalPlayer: React.FunctionComponent<IPlayer> = ({ id = '' }) => {
     fetchData();
   }, [id]);
 
-  console.log(data)
   if (data.content) {
     const html = {__html: data.content.html};
 
