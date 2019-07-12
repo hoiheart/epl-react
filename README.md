@@ -6,6 +6,7 @@ URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
 
 * EPL 2018 Data를 활용한 토이 프로젝트
 * Typescript, React Hooks, TDD 등의 스터디를 목적으로 SEO 지원 및 간결한 배포가 가능한 NextJS + Firebase 조합으로 구현
+* 하지만 Firebase 서버가 매우 느리다 OTL
 
 ## Completed List
 * 기술셋 픽스 및 환경 세팅
