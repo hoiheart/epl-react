@@ -118,7 +118,7 @@ const renderRosterList = ({ roster }) => (
         <td className="position">{v.position.abbreviation}</td>
         <td className="name">
           <Link href={`/player?id=${v.id}`}>
-            <a>{v.fullName}</a>
+            <a target="blank">{v.fullName}</a>
           </Link>
         </td>
         <td scope="col" className="country">
