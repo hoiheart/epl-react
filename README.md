@@ -2,11 +2,10 @@
 
 > **🚧 현재 진행중 프로젝트**
 
-URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
+URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 
-* EPL 2018 Data를 활용한 토이 프로젝트
-* Typescript, React Hooks, TDD 등의 스터디를 목적으로 SEO 지원 및 간결한 배포가 가능한 NextJS + Firebase 조합으로 구현
-* 하지만 Firebase 서버가 매우 느리다 OTL
+* EPL Data를 활용한 토이 프로젝트
+* Typescript, React Hooks, TDD 등의 스터디를 목적으로 SEO 지원 및 간결한 배포가 가능한 NextJS + Heroku 조합으로 구현
 
 ## Completed List
 * 기술셋 픽스 및 환경 세팅
@@ -16,41 +15,38 @@ URL : [https://epl18-9164b.web.app](https://epl18-9164b.web.app)
 * 스탯 메뉴
 
 ## To Do List
-* ~~Firebase에서 데이터 서버사이드 렌더링이 안되는 이슈 : 요금제 변경으로 해결~~
 * 일정 메뉴
 * 선수 상세 정보
 * 디자인 (with Material)
 * TDD
 
+## 변경사항
+* Firebase 에서 Heroku 로 서버 이전
+  * Firebase 는 제약이 많고 설정이 복잡
+  * Heroku 는 Github 인터그레이션으로 배포 자동화 가능
+* NextJS 8 에서 9로 버전업
+  * Typescript 정식 지원, 그외 기능 추가
+
 ## 기술
-* Firebase : Firestore, Functions, Hosting, Storage
+* NodeJS + Heroku
 * Typescript
-* React + Redux + Redux-Saga
-* NextJS (with Firebase + Typescript) : [참고](https://github.com/zeit/next.js/tree/master/examples/with-firebase-hosting-and-typescript)
+* NextJS 9
+* React 16
 
 ## API Source
 [ESPN's hidden API Document](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b) 참고 및 ESPN 웹사이트 탐색을 통해 관련 API Source 수급
-* [Score Board](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?calendar=blacklist&dates=20180901)
+* [Score Board](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?calendar=blacklist&dates=yyyymmdd)
 * [Standings](http://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings)
 * [Statistics](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/statistics)
 * [Teams](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349)
 * [Roster](http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/349/roster)
 * [Player](http://www.espnfc.com/player/169532?xhr=1)
 
-## NPM Global 설치
-`sudo npm install -g firebase-tools typescript`
-
 ## Scripts
-* Firebase 로그인 : `firebase login`
-* Next(Dev) Server 구동 : `npm run dev`
-* 배포용 빌드 : `npm run build`
-* 배포 : `firebase deploy`
+* Dev Server : `npm run dev`
+* Build : `npm run build`
+* Prod Server : `npm start`
+> Build 및 Prod Server 실행은 Heroku 에서 Github Push 시 처리
 
 ## Memo
-* 방화벽 환경에서는 firebase 접근간 인증 오류 발생하는 경우가 있음
-* .npmrc에서 아래 설정 추가를 통해 CMD로 init 등 접근 관련 기능은 수행할 수 있지만 배포는 불가능
-  ```
-  strict-ssl=false
-  NODE_TLS_REJECT_UNAUTHORIZED=0
-  ```
 * API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 public 파일로 관리하거나 espn API(players)를 직접 호출
