@@ -49,4 +49,5 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 > Build 및 Prod Server 실행은 Heroku 에서 Github Push 시 처리
 
 ## Memo
-* API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 public 파일로 관리하거나 espn API(players)를 직접 호출
+* API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 [크롤러](https://github.com/hoiheart/espn-epl-data-crawler)를 제작하여 static 파일로 관리
+  * 프로젝트에 같이 포함시켜 주기적으로 실행시키는 방안 고려
