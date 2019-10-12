@@ -28,10 +28,12 @@ const ModalPlayer: NextPage<IProps> = ({ id = '' }) => {
   }, [id]);
 
   if (data.content) {
-    const html = {__html: data.content.html};
+    const html: () => {__html: string} = () => {
+      return {__html: data.content.html}
+    };
 
     return ReactDOM.createPortal(
-      <div id="modal-player" dangerouslySetInnerHTML={html} />, document.querySelector('body'),
+      <div id="modal-player" dangerouslySetInnerHTML={html()} />, document.querySelector('body'),
     );
   } else {
     return ReactDOM.createPortal(
