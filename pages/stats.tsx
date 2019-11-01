@@ -6,10 +6,10 @@ import fetch from 'isomorphic-unfetch'
 import { getStaticPath } from '../utils/index'
 
 interface IProps {
-  stats?: [];
+  stats: [];
 }
 
-const Stats: NextPage<IProps> = ({ stats = [] }) => {
+const Stats: NextPage<IProps> = ({ stats }) => {
   return (
     <Layout title="Stats | English Premier League">
       {stats.length ? renderStats({ stats }) : ''}
@@ -18,9 +18,13 @@ const Stats: NextPage<IProps> = ({ stats = [] }) => {
 }
 
 Stats.getInitialProps = async () => {
-  const res = await fetch(`${getStaticPath()}/data/statistics/statistics.json`);
-  const json = await res.json();
-  return { stats: json.stats };
+  try {
+    const res = await fetch(`${getStaticPath()}/data/statistics/statistics.json`);
+    const json = await res.json();
+    return { stats: json.stats || [] };
+  } catch(e) {
+    return { stats: [] };
+  }
 }
 
 const renderStats = ({ stats }) => (
@@ -57,7 +61,11 @@ const renderStatsTable = ({ data }) => (
 const renderStatsList = ({ data }) => (
   data.leaders.map((v: any, index) => (
     <tr key={`${data.displayName}${index}`}>
-      <td className="name"><Link href={`/player?id=${v.athlete.id}`}><a>{v.athlete.displayName}</a></Link></td>
+      <td className="name">
+        <Link href={`/player?id=${v.athlete.id}`}>
+          <a target="_blank">{v.athlete.displayName}</a>
+        </Link>
+      </td>
       <td className="team">{v.athlete.team.displayName}</td>
       <td className="value">{v.value}</td>
     </tr>
