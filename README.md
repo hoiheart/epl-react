@@ -6,6 +6,7 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 
 * EPL Data를 활용한 토이 프로젝트
 * Typescript, React Hooks, TDD 등의 스터디를 목적으로 SEO 지원 및 간결한 배포가 가능한 NextJS + Heroku 조합으로 구현
+* Github Actions를 통한 스케쥴링 크롤러
 
 ## Completed List
 * 기술셋 픽스 및 환경 세팅
@@ -43,6 +44,7 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 * [Player](http://www.espnfc.com/player/169532?xhr=1)
 
 ## Scripts
+* Crawler : `npm run crawler`
 * Dev Server : `npm run dev`
 * Build : `npm run build`
 * Prod Server : `npm start`
@@ -50,4 +52,4 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 
 ## Memo
 * API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 [크롤러](https://github.com/hoiheart/espn-epl-data-crawler)를 제작하여 static 파일로 관리
-  * 프로젝트에 같이 포함시켜 주기적으로 실행시키는 방안 고려
+  * <span style="color: gray;">프로젝트에 같이 포함시켜 주기적으로 실행시키는 방안 고려 : 완료</span>
