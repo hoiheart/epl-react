@@ -1,9 +1,6 @@
 name: EPL 정보 크롤링
 
 on:
-  push:
-    branches:
-      - master
   schedule:
     - cron: "0 0 * * *"
 
@@ -26,3 +23,4 @@ jobs:
           git config --global user.name "hoiheart"
           git add -A
           git commit -m "Automate Update EPL Data"
+          git push -f
