@@ -52,4 +52,4 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 
 ## Memo
 * API 데이터는 프로젝트 규모상 DB로 관리하기엔 오버스펙이므로 [크롤러](https://github.com/hoiheart/espn-epl-data-crawler)를 제작하여 static 파일로 관리
-  * <span style="color: gray;">프로젝트에 같이 포함시켜 주기적으로 실행시키는 방안 고려 : 완료</span>
+  * 프로젝트에 같이 포함시켜 주기적으로 실행시키는 방안 고려 : 완료
