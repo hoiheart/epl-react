@@ -1,0 +1,22 @@
+name: EPL 정보 크롤링
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  crawler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm run crawler
+      - run: git add -A
+      - run: git commit -m "Automate Update EPL Data"
+      - run: git push -f"
