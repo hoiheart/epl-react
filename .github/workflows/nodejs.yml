@@ -22,5 +22,7 @@ jobs:
         run: npm run crawler
       - name: Git
         run: | 
+          git config --global user.email "hoiheart@gmail.com"
+          git config --global user.name "hoiheart"
           git add -A
           git commit -m "Automate Update EPL Data"
