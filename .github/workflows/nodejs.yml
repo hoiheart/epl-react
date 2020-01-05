@@ -23,4 +23,4 @@ jobs:
           git config --global user.name "hoiheart"
           git add -A
           git commit -m "Automate Update EPL Data"
-          git push -f
+          git push origin HEAD:master
