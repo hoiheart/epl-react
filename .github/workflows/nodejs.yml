@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -24,6 +26,4 @@ jobs:
       - name: Git Commit
         run: git commit -m "Automate Update EPL Data" -a
       - name: Git Push
-        run: git push
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} 
+        run: git push origin master
