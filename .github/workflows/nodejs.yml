@@ -17,10 +17,9 @@ jobs:
         run: npm i rimraf puppeteer
       - name: Crawling
         run: npm run crawler
-      - name: Commit
+      - name: Git
         run: | 
           git config --global user.email "hoiheart@gmail.com"
           git config --global user.name "hoiheart"
           git commit -m "Automate Update EPL Data" -a
-      - name: Push 
-        uses: actions/checkout@v1
+          git push origin master
