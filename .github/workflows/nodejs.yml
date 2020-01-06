@@ -17,7 +17,7 @@ jobs:
         run: npm i rimraf puppeteer
       - name: Crawling
         run: npm run crawler
-      - name: Git
+      - name: Commit
         run: | 
           git config --global user.email "hoiheart@gmail.com"
           git config --global user.name "hoiheart"
