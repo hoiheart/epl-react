@@ -26,4 +26,4 @@ jobs:
       - name: Git Commit
         run: git commit -m "Automate Update EPL Data" -a
       - name: Git Push
-        run: git push
+        run: git push origin HEAD
