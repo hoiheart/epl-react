@@ -2,7 +2,7 @@ name: EPL 정보 크롤링
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "25 0 * * *"
 
 jobs:
   crawler:
