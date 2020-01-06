@@ -24,6 +24,6 @@ jobs:
       - name: Git Commit
         run: git commit -m "Automate Update EPL Data" -a
       - name: Git Push
-        uses: actions/push@v1
+        run: git push
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} 
