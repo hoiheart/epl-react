@@ -1,29 +1,29 @@
-name: EPL 정보 크롤링
+# name: EPL 정보 크롤링
 
-on:
-  schedule:
-    - cron: "0 0 * * *"
+# on:
+#   schedule:
+#     - cron: "0 0 * * *"
 
-jobs:
-  crawler:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}    
-      - name: Install Dependencies
-        run: npm i rimraf puppeteer
-      - name: Crawling
-        run: npm run crawler
-      - name: Git Config
-        run: | 
-          git config --global user.email "hoiheart@gmail.com"
-          git config --global user.name "hoiheart"
-      - name: Git Commit
-        run: git commit -m "Automate Update EPL Data" -a
-      - name: Git Push
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+# jobs:
+#   crawler:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}    
+#       - name: Install Dependencies
+#         run: npm i rimraf puppeteer
+#       - name: Crawling
+#         run: npm run crawler
+#       - name: Git Config
+#         run: | 
+#           git config --global user.email "hoiheart@gmail.com"
+#           git config --global user.name "hoiheart"
+#       - name: Git Commit
+#         run: git commit -m "Automate Update EPL Data" -a
+#       - name: Git Push
+#         uses: ad-m/github-push-action@master
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
