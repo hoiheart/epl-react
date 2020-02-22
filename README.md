@@ -9,14 +9,14 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 * Github Actions를 통한 크롤링 스케쥴화 (주 1회)
 
 ## Work List
-[x] 기술셋 픽스 및 환경 세팅
-[x] API 데이터 수급
-[x] 인덱스(순위 목록) 메뉴
-[x] 팀 메뉴
-[x] 스탯 메뉴
-[ ] 일정 메뉴
-[ ] 디자인 (with Material)
-[ ] TDD
+- [x] 기술셋 픽스 및 환경 세팅
+- [x] API 데이터 수급
+- [x] 인덱스(순위 목록) 메뉴
+- [x] 팀 메뉴
+- [x] 스탯 메뉴
+- [ ] 일정 메뉴
+- [ ] 디자인 (with Material)
+- [ ] TDD
 
 ## API
 [ESPN's hidden API Document](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b) 참고 및 ESPN 웹사이트 탐색을 통해 관련 API Source 수급
