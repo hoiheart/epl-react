@@ -21,11 +21,11 @@ const Layout: React.FunctionComponent<Props> = ({
       <meta property="og:title" content={title} />
     </Head>
     <header>
-      <h1>English Premier League 2018</h1>
+      <h1>English Premier League</h1>
       <nav>
         <Link href='/'><a>Home</a></Link>
         <Link href='/teams'><a>Teams</a></Link>
-        <Link href='/fixtures'><a><del>Fixtures</del></a></Link>
+        {/* <Link href='/fixtures'><a><del>Fixtures</del></a></Link> */}
         <Link href='/stats'><a>Stats</a></Link>
       </nav>
     </header>
