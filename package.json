@@ -9,7 +9,7 @@
     "start": "next start -p $PORT"
   },
   "engines": {
-    "node": "12.14.0"
+    "node": "12.16.0"
   },
   "dependencies": {
     "@types/node": "^12.12.22",
