@@ -1,10 +1,10 @@
 {
   "name": "epl-react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "crawler": "rimraf ./static/data && node ./crawler/standings.js && node ./crawler/statistics.js && node ./crawler/fixtures.js && node ./crawler/teams.js",
-    "dev": "next dev -p 4000",
+    "crawler": "rimraf ./public/static/data && node ./crawler/standings.js && node ./crawler/statistics.js && node ./crawler/fixtures.js && node ./crawler/teams.js",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start -p $PORT"
   },
@@ -16,8 +16,8 @@
     "@types/react": "^16.9.17",
     "@zeit/next-sass": "^1.0.1",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "9.0.5",
-    "node-sass": "^4.12.0",
+    "next": "^9.2.2",
+    "node-sass": "^4.13.1",
     "puppeteer": "^1.20.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
