@@ -34,11 +34,7 @@ const renderRosterList = ({ roster }) => (
       <tr key={index}>
         <td className="number">{v.jersey}</td>
         <td className="position">{v.position.abbreviation}</td>
-        <td className="name">
-          <Link href={`/player?id=${v.id}`}>
-            <a target="_blank">{v.fullName}</a>
-          </Link>
-        </td>
+        <td className="name">{v.fullName}</td>
         <td scope="col" className="country">
           {v.flag ? <><img src={v.flag.href} width="32" height="32" alt="" /> {v.flag.alt}</> : '-'}
         </td>

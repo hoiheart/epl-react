@@ -61,11 +61,7 @@ const renderStatsTable = ({ data }) => (
 const renderStatsList = ({ data }) => (
   data.leaders.map((v: any, index) => (
     <tr key={`${data.displayName}${index}`}>
-      <td className="name">
-        <Link href={`/player?id=${v.athlete.id}`}>
-          <a target="_blank">{v.athlete.displayName}</a>
-        </Link>
-      </td>
+      <td className="name">{v.athlete.displayName}</td>
       <td className="team">{v.athlete.team.displayName}</td>
       <td className="value">{v.value}</td>
     </tr>
