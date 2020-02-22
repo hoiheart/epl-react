@@ -12,8 +12,8 @@ const fs = require('fs');
     await page.content()
     const teamsJson = await page.evaluate(() => JSON.parse(document.querySelector('body').innerText))
 
-    await fs.mkdirSync('./static/data/teams/', { recursive: true })
-    await fs.writeFileSync('./static/data/teams/teams.json', JSON.stringify(teamsJson))
+    await fs.mkdirSync('./public/static/data/teams/', { recursive: true })
+    await fs.writeFileSync('./public/static/data/teams/teams.json', JSON.stringify(teamsJson))
 
     const teams = teamsJson.sports[0].leagues[0].teams.map(data => data.team.id)
 
@@ -22,8 +22,8 @@ const fs = require('fs');
       await page.content()
       const teamJson = await page.evaluate(() => JSON.parse(document.querySelector('body').innerText))
 
-      await fs.mkdirSync('./static/data/teams/', { recursive: true })
-      await fs.writeFileSync(`./static/data/teams/${teamID}.json`, JSON.stringify(teamJson))
+      await fs.mkdirSync('./public/static/data/teams/', { recursive: true })
+      await fs.writeFileSync(`./public/static/data/teams/${teamID}.json`, JSON.stringify(teamJson))
     }
 
     for (const teamID of teams) {
@@ -31,8 +31,8 @@ const fs = require('fs');
       await page.content()
       const rostersJson = await page.evaluate(() => JSON.parse(document.querySelector('body').innerText))
 
-      await fs.mkdirSync('./static/data/rosters/', { recursive: true })
-      await fs.writeFileSync(`./static/data/rosters/${teamID}.json`, JSON.stringify(rostersJson))
+      await fs.mkdirSync('./public/static/data/rosters/', { recursive: true })
+      await fs.writeFileSync(`./public/static/data/rosters/${teamID}.json`, JSON.stringify(rostersJson))
     }
 
     await browser.close()

@@ -19,8 +19,8 @@ const fs = require('fs');
       await page.content()
       const subJson = await page.evaluate(() => JSON.parse(document.querySelector('body').innerText))
 
-      await fs.mkdirSync('./static/data/fixtures/', { recursive: true })
-      await fs.writeFileSync(`./static/data/fixtures/${date}.json`, JSON.stringify(subJson))
+      await fs.mkdirSync('./public/static/data/fixtures/', { recursive: true })
+      await fs.writeFileSync(`./public/static/data/fixtures/${date}.json`, JSON.stringify(subJson))
     }
 
     await browser.close()

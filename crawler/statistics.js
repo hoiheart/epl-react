@@ -12,8 +12,8 @@ const fs = require('fs');
     await page.content()
     const json = await page.evaluate(() => JSON.parse(document.querySelector('body').innerText))
 
-    await fs.mkdirSync('./static/data/statistics/', { recursive: true })
-    await fs.writeFileSync('./static/data/statistics/statistics.json', JSON.stringify(json))
+    await fs.mkdirSync('./public/static/data/statistics/', { recursive: true })
+    await fs.writeFileSync('./public/static/data/statistics/statistics.json', JSON.stringify(json))
 
     await browser.close()
 
