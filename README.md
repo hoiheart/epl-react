@@ -14,7 +14,7 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 - [x] 인덱스(순위 목록) 메뉴
 - [x] 팀 메뉴
 - [x] 스탯 메뉴
-- [ ] 일정 메뉴
+- [x] 일정 메뉴
 - [ ] 디자인 (with Material)
 - [ ] TDD
 
