@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 import { NextPage } from 'next'
 import fetch from 'isomorphic-unfetch'
-import { getStaticPath } from '../utils/index'
+import { staticPath } from '../utils/index'
 import dayjs from 'dayjs'
 
 interface IProps {
@@ -24,7 +24,7 @@ const Fixtures: NextPage<IProps> = ({ date, fixtures }) => {
 Fixtures.getInitialProps = async ({ query }) => {
   const date = query.date || dayjs().format('YYYYMMDD')
   try {
-    const res = await fetch(`${getStaticPath()}/data/fixtures/${date}.json`);
+    const res = await fetch(`${staticPath}/data/fixtures/${date}.json`);
     const json = await res.json();
     return { date, fixtures: json || {} };
   } catch(e) {

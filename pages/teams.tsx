@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 import { NextPage } from 'next'
 import fetch from 'isomorphic-unfetch'
-import { getStaticPath } from '../utils/index'
+import { staticPath } from '../utils/index'
 import TeamNav from '../components/teams/nav'
 import TeamInfo from '../components/teams/info'
 import TeamRoster from '../components/teams/roster'
@@ -25,11 +25,11 @@ const Teams: NextPage<IProps> = ({ teams = [], team = {}, roster = [] }) => {
 }
 
 Teams.getInitialProps = async (props: any) => {
-  const resTeams = await fetch(`${getStaticPath()}/data/teams/teams.json`);
+  const resTeams = await fetch(`${staticPath}/data/teams/teams.json`);
   const jsonTeams = await resTeams.json();
-  const resTeam = await fetch(`${getStaticPath()}/data/teams/${jsonTeams.sports[0].leagues[0].teams[0]}.json`);
+  const resTeam = await fetch(`${staticPath}/data/teams/${jsonTeams.sports[0].leagues[0].teams[0].team.id}.json`);
   const jsonTeam = await resTeam.json();
-  const resRoster = await fetch(`${getStaticPath()}/data/rosters/${jsonTeams.sports[0].leagues[0].teams[0]}.json`);
+  const resRoster = await fetch(`${staticPath}/data/rosters/${jsonTeams.sports[0].leagues[0].teams[0].team.id}.json`);
   const jsonRoster = await resRoster.json();
   const result: {
     teams: [],

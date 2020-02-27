@@ -1,21 +1,23 @@
-import * as React from 'react'
-import Link from 'next/link'
-import Layout from '../components/Layout'
+/* type */
 import { NextPage } from 'next'
+
+import * as React from 'react'
 import fetch from 'isomorphic-unfetch'
-import { getStaticPath } from '../utils/index'
+import { staticPath } from '../utils/index'
+
+import Layout from '../components/Layout'
 import StandingsList from '../components/standings/list'
 
-interface IProps {
+interface IndexPage {
   standings: [];
 }
 
-const Index: NextPage<IProps> = ({ standings = [] }) => {
+const Index: NextPage<IndexPage> = ({ standings }) => {
   return (
-    <Layout title="Home | English Premier League">
+    <Layout title='Home | English Premier League'>
       <h2>Standings</h2>
-      <div className="standings">
-        {standings.length ? <StandingsList standings={ standings } /> : ''}
+      <div className='standings'>
+        <StandingsList standings={standings} />
       </div>
     </Layout>
   )
@@ -23,12 +25,12 @@ const Index: NextPage<IProps> = ({ standings = [] }) => {
 
 Index.getInitialProps = async () => {
   try {
-    const res = await fetch(`${getStaticPath()}/data/standings/standings.json`);
-    const json = await res.json();
-    return { standings: json.children[0].standings.entries || [] };
+    const result = await fetch(`${staticPath}/data/standings/standings.json`)
+    const data = await result.json()
+    return { standings: data.children[0]?.standings?.entries || [] }
   } catch (e) {
     return { standings: [] }
   }
 }
 
-export default Index;
+export default Index

@@ -25,6 +25,22 @@
     "typescript": "^3.7.4"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2"
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "rimraf": "^3.0.2",
+    "standard": "^14.3.1",
+    "standardx": "^5.0.0"
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error"
+    }
+  },
+  "standardx": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ]
   }
 }

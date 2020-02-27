@@ -4,14 +4,11 @@ import Head from 'next/head'
 
 import '../scss/style.scss'
 
-type Props = {
-  title?: string
+interface LayoutComponent {
+  title: string
 }
 
-const Layout: React.FunctionComponent<Props> = ({
-  children,
-  title = 'English Premier League',
-}) => (
+const Layout: React.FunctionComponent<LayoutComponent> = ({ children, title = 'English Premier League' }) => (
   <div>
     <Head>
       <title>{title}</title>

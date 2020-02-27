@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 import { NextPage } from 'next'
 import fetch from 'isomorphic-unfetch'
-import { getStaticPath } from '../utils/index'
+import { staticPath } from '../utils/index'
 
 interface IProps {
   stats: [];
@@ -19,8 +19,9 @@ const Stats: NextPage<IProps> = ({ stats }) => {
 
 Stats.getInitialProps = async () => {
   try {
-    const res = await fetch(`${getStaticPath()}/data/statistics/statistics.json`);
+    const res = await fetch(`${staticPath}/data/statistics/statistics.json`);
     const json = await res.json();
+    console.log(json)
     return { stats: json.stats || [] };
   } catch(e) {
     return { stats: [] };
