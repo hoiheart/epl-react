@@ -1,6 +1,9 @@
 import * as React from 'react'
 import Link from 'next/link'
 
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 interface TeamsNavComponent {
   teams: TeamEntry[]
 }
@@ -17,27 +20,24 @@ interface TeamEntry {
 
 const TeamsNav: React.FunctionComponent<TeamsNavComponent> = ({ teams }) => {
   return (
-    <>
-      <h2>Teams</h2>
-      <div className="teams">
-        <ul>
-          {renderTeamsList({ teams })}
-        </ul>
-      </div>
-    </>
+    <div className="teams-nav">
+      <Grid container>
+        {renderTeamsList({ teams })}
+      </Grid>
+    </div>
   )
 }
 
 const renderTeamsList = ({ teams }) => (
   teams.map((entry: TeamEntry, index) => (
-    <li key={index}>
+    <Grid key={index} item>
       <Link scroll={false} href={`/teams/[id]`} as={`/teams/${entry.team.id}`}>
         <a>
-          <img src={entry.team.logos[0].href} width="48" height="48" alt="" />
+          <img src={entry.team.logos[0].href} width="24" height="24" alt="" />
           {entry.team.displayName}
         </a>
       </Link>
-    </li>
+    </Grid>
   ))
 )
 

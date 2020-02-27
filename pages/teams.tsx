@@ -7,9 +7,11 @@ import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
 
 import Layout from '../components/Layout'
+import PageTitle from '../components/PageTitle'
 import TeamsNav from '../components/teams/nav'
 import TeamsInfo from '../components/teams/info'
 import TeamsRoster from '../components/teams/roster'
+
 interface TeamsPage {
   teams: [],
   team: Team,
@@ -19,14 +21,18 @@ interface TeamsPage {
 const Teams: NextPage<TeamsPage> = ({ teams, team, roster }) => {
   return (
     <Layout title="Teams | English Premier League">
+      <PageTitle html={'Teams'} />
       <TeamsNav teams={ teams } />
-      {team.id ? <TeamsInfo team={ team } /> : ''}
+      {team.id ?
+        <TeamsInfo team={ team } /> :
+        <p className="empty">no data</p>
+      }
       <TeamsRoster roster={ roster } />
     </Layout>
   )
 }
 
-Teams.getInitialProps = async (props) => {
+Teams.getInitialProps = async () => {
   const teams = await (async () => {
     try {
       const result = await fetch(`${staticPath}/data/teams/teams.json`);

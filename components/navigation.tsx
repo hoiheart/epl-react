@@ -1,48 +1,15 @@
 import * as React from 'react'
 import Link from 'next/link'
 
-import { makeStyles } from '@material-ui/core/styles'
-import BottomNavigation from '@material-ui/core/BottomNavigation'
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import RestoreIcon from '@material-ui/icons/Restore'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import LocationOnIcon from '@material-ui/icons/LocationOn'
-
-const useStyles = makeStyles({
-  root: {
-    position: 'fixed',
-    left: 0,
-    bottom: 0,
-    width: '100%',
-  },
-})
-
 const Navigation: React.FunctionComponent = () => {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
   return (
-    <BottomNavigation
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      showLabels
-      className={classes.root}
-    >
-      <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
-    </BottomNavigation>
+    <nav>
+      <Link href='/'><a>Home</a></Link>
+      <Link href='/teams'><a>Teams</a></Link>
+      <Link href='/fixtures'><a>Fixtures</a></Link>
+      <Link href='/stats'><a>Stats</a></Link>
+    </nav>
   )
-  // <BottomNavigation>
-  //   <nav>
-  //     <Link href='/'><a>Home</a></Link>
-  //     <Link href='/teams'><a>Teams</a></Link>
-  //     <Link href='/fixtures'><a>Fixtures</a></Link>
-  //     <Link href='/stats'><a>Stats</a></Link>
-  //   </nav>
-  // </BottomNavigation>
 }
 
 export default Navigation

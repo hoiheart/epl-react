@@ -6,6 +6,16 @@ import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
 
 import Layout from '../components/Layout'
+import PageTitle from '../components/PageTitle'
+
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
 interface StatsPage {
   stats: Stat[]
@@ -29,7 +39,13 @@ interface Player {
 const Stats: NextPage<StatsPage> = ({ stats }) => {
   return (
     <Layout title="Stats | English Premier League">
-      {stats.length ? renderStats({ stats }) : ''}
+      <PageTitle html={'Stats'} />
+      <div className="stats">
+        {stats.length ?
+          renderStats({ stats }) :
+          <p className="empty">no data</p>
+        }
+      </div>
     </Layout>
   )
 }
@@ -50,43 +66,43 @@ Stats.getInitialProps = async () => {
 }
 
 const renderStats = ({ stats }) => (
-  <>
-    <h2>Stats</h2>
-    <div className="stats">
-      {stats.map((stat: Stat) => renderStatsDivision({ stat }))}
-    </div>
-  </>
+  stats.map((stat: Stat) => renderStatDivision({ stat }))
 )
 
-const renderStatsDivision = ({ stat }) => (
-  <div key={stat.displayName}>
-    <h3>{stat.displayName}</h3>
-    {stat.leaders.length ? renderStatsTable({ stat }) : ''}
+const renderStatDivision = ({ stat }) => (
+  <div key={stat.displayName} className="stat">
+    <Typography variant="h6" component={'h3'} gutterBottom>{ stat.displayName }</Typography>
+    {stat.leaders?.length ?
+      renderStatTable({ stat }) :
+      <p className="empty">no data</p>
+    }
   </div>
 )
 
-const renderStatsTable = ({ stat }) => (
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" className="name">Name</th>
-        <th scope="col" className="team">Team</th>
-        <th scope="col" className="value">{stat.displayName}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {renderStatsList({ stat })}
-    </tbody>
-  </table>
+const renderStatTable = ({ stat }) => (
+  <TableContainer component={Paper}>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell scope="col" className="name">Name</TableCell>
+          <TableCell scope="col" className="team">Team</TableCell>
+          <TableCell scope="col" className="value">{stat.displayName}</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {renderStatList({ stat })}
+      </TableBody>
+    </Table>
+  </TableContainer>
 )
 
-const renderStatsList = ({ stat }) => (
+const renderStatList = ({ stat }) => (
   stat.leaders.map((player: Player, index) => (
-    <tr key={`${stat.displayName}${index}`}>
-      <td className="name">{player.athlete.displayName}</td>
-      <td className="team">{player.athlete.team.displayName}</td>
-      <td className="value">{player.value}</td>
-    </tr>
+    <TableRow key={`${stat.displayName}${index}`}>
+      <TableCell className="name">{player.athlete.displayName}</TableCell>
+      <TableCell className="team">{player.athlete.team.displayName}</TableCell>
+      <TableCell className="value">{player.value}</TableCell>
+    </TableRow>
   ))
 )
 

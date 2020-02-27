@@ -19,6 +19,7 @@ const Layout: React.FunctionComponent<LayoutComponent> = ({ children, title = 'E
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="robots" content="index,follow" />
       <meta property="og:title" content={title} />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     </Head>
     <header>
       <h1><img src={`${staticPath}/logo.svg`} alt="English Premier League" /></h1>
