@@ -2,7 +2,7 @@ import * as React from 'react'
 import Link from 'next/link'
 
 interface StandingsListComponent {
-  standings: StandinsEntry[];
+  standings: StandinsEntry[]
 }
 
 interface StandinsEntry {
@@ -52,23 +52,23 @@ const StandingsList: React.FunctionComponent<StandingsListComponent> = ({ standi
 const renderStandingsList = ({ standings }) => (
   standings.map((entry: StandinsEntry, index) => (
     <tr key={index} style={{backgroundColor: entry.note?.color}}>
-      <td className="rank">{entry.stats[7].displayValue}</td>
+      <td className="rank">{entry.stats[7]?.displayValue}</td>
       <td className="name">
-        <Link href={`/teams/[id]`} as={`/teams/${entry.team.id}`}>
+        <Link href={`/teams/[id]`} as={`/teams/${entry.team?.id}`}>
           <a>
-            <img src={entry.team.logos[0].href} width="48" height="48" alt="" />
-            {entry.team.displayName}
+            <img src={entry.team?.logos[0]?.href} width="48" height="48" alt="" />
+            {entry.team?.displayName}
           </a>
         </Link>
       </td>
-      <td className="gp">{entry.stats[3].displayValue}</td>
-      <td className="win">{entry.stats[0].displayValue}</td>
-      <td className="draw">{entry.stats[2].displayValue}</td>
-      <td className="lose">{entry.stats[1].displayValue}</td>
-      <td className="point">{entry.stats[6].displayValue}</td>
-      <td className="gf">{entry.stats[4].displayValue}</td>
-      <td className="ga">{entry.stats[5].displayValue}</td>
-      <td className="gd">{entry.stats[8].displayValue}</td>
+      <td className="gp">{entry.stats[3]?.displayValue}</td>
+      <td className="win">{entry.stats[0]?.displayValue}</td>
+      <td className="draw">{entry.stats[2]?.displayValue}</td>
+      <td className="lose">{entry.stats[1]?.displayValue}</td>
+      <td className="point">{entry.stats[6]?.displayValue}</td>
+      <td className="gf">{entry.stats[4]?.displayValue}</td>
+      <td className="ga">{entry.stats[5]?.displayValue}</td>
+      <td className="gd">{entry.stats[8]?.displayValue}</td>
     </tr>
   ))
 )

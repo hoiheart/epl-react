@@ -1,15 +1,32 @@
-import * as React from 'react'
-import Link from 'next/link'
-import Layout from '../components/Layout'
+/* type */
 import { NextPage } from 'next'
+
+import * as React from 'react'
 import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
 
-interface IProps {
-  stats: [];
+import Layout from '../components/Layout'
+
+interface StatsPage {
+  stats: Stat[]
 }
 
-const Stats: NextPage<IProps> = ({ stats }) => {
+interface Stat {
+  displayName?: string,
+  leaders?: Player[]
+}
+
+interface Player {
+  athlete?: {
+    displayName: string,
+    team?: {
+      displayName?: string
+    }
+  },
+  value?: number
+}
+
+const Stats: NextPage<StatsPage> = ({ stats }) => {
   return (
     <Layout title="Stats | English Premier League">
       {stats.length ? renderStats({ stats }) : ''}
@@ -18,53 +35,57 @@ const Stats: NextPage<IProps> = ({ stats }) => {
 }
 
 Stats.getInitialProps = async () => {
-  try {
-    const res = await fetch(`${staticPath}/data/statistics/statistics.json`);
-    const json = await res.json();
-    console.log(json)
-    return { stats: json.stats || [] };
-  } catch(e) {
-    return { stats: [] };
-  }
+  const stats = await (async () => {
+    try {
+      const result = await fetch(`${staticPath}/data/statistics/statistics.json`);
+      const data = await result.json()
+
+      return data.stats || []
+    } catch (e) {
+      return []
+    }
+  })()
+
+  return { stats }
 }
 
 const renderStats = ({ stats }) => (
   <>
     <h2>Stats</h2>
     <div className="stats">
-      {stats.map((v: any) => renderStatsDivision({ data: v }))}
+      {stats.map((stat: Stat) => renderStatsDivision({ stat }))}
     </div>
   </>
 )
 
-const renderStatsDivision = ({ data }) => (
-  <div key={data.displayName}>
-    <h3>{data.displayName}</h3>
-    {data.leaders.length ? renderStatsTable({ data }) : ''}
+const renderStatsDivision = ({ stat }) => (
+  <div key={stat.displayName}>
+    <h3>{stat.displayName}</h3>
+    {stat.leaders.length ? renderStatsTable({ stat }) : ''}
   </div>
 )
 
-const renderStatsTable = ({ data }) => (
+const renderStatsTable = ({ stat }) => (
   <table>
     <thead>
       <tr>
         <th scope="col" className="name">Name</th>
         <th scope="col" className="team">Team</th>
-        <th scope="col" className="value">{data.displayName}</th>
+        <th scope="col" className="value">{stat.displayName}</th>
       </tr>
     </thead>
     <tbody>
-      {renderStatsList({ data })}
+      {renderStatsList({ stat })}
     </tbody>
   </table>
 )
 
-const renderStatsList = ({ data }) => (
-  data.leaders.map((v: any, index) => (
-    <tr key={`${data.displayName}${index}`}>
-      <td className="name">{v.athlete.displayName}</td>
-      <td className="team">{v.athlete.team.displayName}</td>
-      <td className="value">{v.value}</td>
+const renderStatsList = ({ stat }) => (
+  stat.leaders.map((player: Player, index) => (
+    <tr key={`${stat.displayName}${index}`}>
+      <td className="name">{player.athlete.displayName}</td>
+      <td className="team">{player.athlete.team.displayName}</td>
+      <td className="value">{player.value}</td>
     </tr>
   ))
 )

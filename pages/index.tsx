@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 import StandingsList from '../components/standings/list'
 
 interface IndexPage {
-  standings: [];
+  standings: []
 }
 
 const Index: NextPage<IndexPage> = ({ standings }) => {
@@ -24,13 +24,18 @@ const Index: NextPage<IndexPage> = ({ standings }) => {
 }
 
 Index.getInitialProps = async () => {
-  try {
-    const result = await fetch(`${staticPath}/data/standings/standings.json`)
-    const data = await result.json()
-    return { standings: data.children[0]?.standings?.entries || [] }
-  } catch (e) {
-    return { standings: [] }
-  }
+  const standings = await (async () => {
+    try {
+      const result = await fetch(`${staticPath}/data/standings/standings.json`)
+      const data = await result.json()
+
+      return data.children[0]?.standings?.entries || []
+    } catch (e) {
+      return []
+    }
+  })()
+
+  return { standings }
 }
 
 export default Index

@@ -1,47 +1,70 @@
-import * as React from 'react'
-import Link from 'next/link'
-import Layout from '../components/Layout'
+/* type */
 import { NextPage } from 'next'
+import { Team } from '../components/teams/info'
+
+import * as React from 'react'
 import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
-import TeamNav from '../components/teams/nav'
-import TeamInfo from '../components/teams/info'
-import TeamRoster from '../components/teams/roster'
 
-interface IProps {
-  teams: [];
-  team: any;
-  roster: [];
+import Layout from '../components/Layout'
+import TeamsNav from '../components/teams/nav'
+import TeamsInfo from '../components/teams/info'
+import TeamsRoster from '../components/teams/roster'
+interface TeamsPage {
+  teams: [],
+  team: Team,
+  roster: []
 }
 
-const Teams: NextPage<IProps> = ({ teams = [], team = {}, roster = [] }) => {
+const Teams: NextPage<TeamsPage> = ({ teams, team, roster }) => {
   return (
     <Layout title="Teams | English Premier League">
-      {teams.length ? <TeamNav teams={ teams } /> : ''}
-      {team.id ? <TeamInfo team={ team } /> : ''}
-      {roster.length ? <TeamRoster roster={ roster } /> : ''}
+      <TeamsNav teams={ teams } />
+      {team.id ? <TeamsInfo team={ team } /> : ''}
+      <TeamsRoster roster={ roster } />
     </Layout>
   )
 }
 
-Teams.getInitialProps = async (props: any) => {
-  const resTeams = await fetch(`${staticPath}/data/teams/teams.json`);
-  const jsonTeams = await resTeams.json();
-  const resTeam = await fetch(`${staticPath}/data/teams/${jsonTeams.sports[0].leagues[0].teams[0].team.id}.json`);
-  const jsonTeam = await resTeam.json();
-  const resRoster = await fetch(`${staticPath}/data/rosters/${jsonTeams.sports[0].leagues[0].teams[0].team.id}.json`);
-  const jsonRoster = await resRoster.json();
-  const result: {
-    teams: [],
-    team: {},
-    roster: []
-  } = {
-    teams: jsonTeams.sports[0].leagues[0].teams,
-    team: jsonTeam.team,
-    roster: jsonRoster.athletes
-  };
+Teams.getInitialProps = async (props) => {
+  const teams = await (async () => {
+    try {
+      const result = await fetch(`${staticPath}/data/teams/teams.json`);
+      const data = await result.json()
 
-  return result;
+      return data.sports[0]?.leagues[0]?.teams || []
+    } catch (e) {
+      return []
+    }
+  })()
+
+  const team = await (async () => {
+    try {
+      const result = await fetch(`${staticPath}/data/teams/${teams[0].team.id}.json`);
+      const data = await result.json()
+
+      return data.team || {}
+    } catch (e) {
+      return {}
+    }
+  })()
+
+  const roster = await (async () => {
+    try {
+      const result = await fetch(`${staticPath}/data/rosters/${teams[0].team.id}.json`);
+      const data = await result.json()
+
+      return data.athletes || []
+    } catch (e) {
+      return []
+    }
+  })()
+
+  return {
+    teams,
+    team,
+    roster
+  }
 }
 
 export default Teams;

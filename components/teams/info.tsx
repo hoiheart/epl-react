@@ -1,22 +1,27 @@
 import * as React from 'react'
 
-interface IProps {
-  team: {
-    logos: [{
-      href: string
-    }],
-    displayName: string,
-    nickname: string,
-    record: {
-      items: [{
-        summary: string,
-        stats: any
-      }]
-    }
-  }
+interface TeamComponent {
+  team: Team
 }
 
-const TeamInfo: React.FunctionComponent<IProps> = ({ team }) => {
+interface Team {
+  id?: string
+  displayName?: string,
+  nickname?: string,
+  record?: {
+    items?: {
+      stats?: {
+        value: number
+      }[],
+      summary?: string
+    }[],
+  }
+  logos?: {
+    href?: string
+  }[]
+}
+
+const TeamInfo: React.FunctionComponent<TeamComponent> = ({ team }) => {
   return (
     <>
       <div className="team">
@@ -30,3 +35,5 @@ const TeamInfo: React.FunctionComponent<IProps> = ({ team }) => {
 }
 
 export default TeamInfo
+
+export { Team }

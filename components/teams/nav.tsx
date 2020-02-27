@@ -1,11 +1,21 @@
 import * as React from 'react'
 import Link from 'next/link'
 
-interface IProps {
-  teams: []
+interface TeamsNavComponent {
+  teams: TeamEntry[]
 }
 
-const TeamsNav: React.FunctionComponent<IProps> = ({ teams }) => {
+interface TeamEntry {
+  team: {
+    id: string,
+    displayName: string,
+    logos?: {
+      href?: string,
+    }[]
+  }
+}
+
+const TeamsNav: React.FunctionComponent<TeamsNavComponent> = ({ teams }) => {
   return (
     <>
       <h2>Teams</h2>
@@ -19,12 +29,12 @@ const TeamsNav: React.FunctionComponent<IProps> = ({ teams }) => {
 }
 
 const renderTeamsList = ({ teams }) => (
-  teams.map((v: any, index) => (
+  teams.map((entry: TeamEntry, index) => (
     <li key={index}>
-      <Link scroll={false} href={`/teams/[id]`} as={`/teams/${v.team.id}`}>
+      <Link scroll={false} href={`/teams/[id]`} as={`/teams/${entry.team.id}`}>
         <a>
-          <img src={v.team.logos[0].href} width="48" height="48" alt="" />
-          {v.team.displayName}
+          <img src={entry.team.logos[0].href} width="48" height="48" alt="" />
+          {entry.team.displayName}
         </a>
       </Link>
     </li>
