@@ -2,12 +2,12 @@
 import { NextPage } from 'next'
 
 import * as React from 'react'
-import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
 import dayjs from 'dayjs'
 
 import Layout from '../components/Layout'
+import PageTitle from '../components/pageTitle'
 import FixturesNav from '../components/fixtures/nav'
 import FixturesList from '../components/fixtures/list'
 
@@ -19,7 +19,7 @@ interface FixturesPage {
 const Fixtures: NextPage<FixturesPage> = ({ date, fixtures }) => {
   return (
     <Layout title="Fixtures | English Premier League">
-      <h2>Fixtures</h2>
+      <PageTitle html={'Fixtures'} />
       <FixturesNav date={ date } />
       <FixturesList fixtures={ fixtures } />
     </Layout>

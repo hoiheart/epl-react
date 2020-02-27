@@ -7,6 +7,7 @@ import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../../utils/index'
 
 import Layout from '../../components/Layout'
+import PageTitle from '../../components/pageTitle'
 import TeamsNav from '../../components/teams/nav'
 import TeamsInfo from '../../components/teams/info'
 import TeamsRoster from '../../components/teams/roster'
@@ -20,8 +21,12 @@ interface TeamsPage {
 const Teams: NextPage<TeamsPage> = ({ teams, team, roster }) => {
   return (
     <Layout title="Teams | English Premier League">
+      <PageTitle html={'Teams'} />
       <TeamsNav teams={ teams } />
-      {team.id ? <TeamsInfo team={ team } /> : ''}
+      {team.id ?
+        <TeamsInfo team={ team } /> :
+        <p className="empty">no data</p>
+      }
       <TeamsRoster roster={ roster } />
     </Layout>
   )

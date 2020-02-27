@@ -6,7 +6,7 @@ import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
 
 import Layout from '../components/Layout'
-import PageTitle from '../components/PageTitle'
+import PageTitle from '../components/pageTitle'
 import StandingsList from '../components/standings/list'
 
 interface IndexPage {

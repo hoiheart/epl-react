@@ -12,7 +12,7 @@ const FixturesNav: React.FunctionComponent<FixturesNavComponent> = ({ date }) =>
   const tomorrow = dayjs(date).add(1, 'day').format('YYYYMMDD')
 
   return (
-    <div className="dates">
+    <div className="fixtures-nav">
       <Link href={`/fixtures?date=${yesterday}`}><a>&lt;</a></Link>
       {date}
       <Link href={`/fixtures?date=${tomorrow}`}><a>&gt;</a></Link>

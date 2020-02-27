@@ -1,5 +1,13 @@
 import * as React from 'react'
 
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
+
 interface RosterComponent {
   roster: Player[]
 }
@@ -20,55 +28,57 @@ interface Player {
     }
   },
   flag?: {
-    hrefv: string,
+    href?: string,
     alt?: string
   },
   jersey?: string,
 }
 
-const TeamRoster: React.FunctionComponent<RosterComponent> = ({ roster }) => {
+const TeamsRoster: React.FunctionComponent<RosterComponent> = ({ roster }) => {
   return (
-    <>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" className="number">No.</th>
-          <th scope="col" className="position">Position</th>
-          <th scope="col" className="name">Name</th>
-          <th scope="col" className="country">Country</th>
-          <th scope="col" className="age">Age</th>
-          <th scope="col" className="goals">Goals</th>
-          <th scope="col" className="assists">Assists</th>
-        </tr>
-      </thead>
-      <tbody>
-        {renderRosterList({ roster })}
-      </tbody>
-    </table>
-  </>
+    <div className="teams-roster">
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell scope="col" className="number">No.</TableCell>
+              <TableCell scope="col" className="position">Position</TableCell>
+              <TableCell scope="col" className="name">Name</TableCell>
+              <TableCell scope="col" className="country">Country</TableCell>
+              <TableCell scope="col" className="age">Age</TableCell>
+              <TableCell scope="col" className="goals">Goals</TableCell>
+              <TableCell scope="col" className="assists">Assists</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {renderRosterList({ roster })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   )
 }
 
 const renderRosterList = ({ roster }) => (
   roster.map((player: Player, index) => {
     return (
-      <tr key={index}>
-        <td className="number">{player.jersey}</td>
-        <td className="position">{player.position.abbreviation}</td>
-        <td className="name">{player.fullName}</td>
-        <td scope="col" className="country">
+      <TableRow key={index}>
+        <TableCell className="number">{player.jersey}</TableCell>
+        <TableCell className="position">{player.position.abbreviation}</TableCell>
+        <TableCell className="name">{player.fullName}</TableCell>
+        <TableCell scope="col" className="country">
           {player.flag ? <><img src={player.flag.href} width="32" height="32" alt="" /> {player.flag.alt}</> : '-'}
-        </td>
-        <td scope="col" className="age">{player.age}</td>
-        <td scope="col" className="goals">
+        </TableCell>
+        <TableCell scope="col" className="age">{player.age}</TableCell>
+        <TableCell scope="col" className="goals">
           {player.statistics?.splits?.categories[1]?.stats[4]?.displayValue || '0'}
-        </td>
-        <td scope="col" className="assists">
+        </TableCell>
+        <TableCell scope="col" className="assists">
           {player.statistics?.splits?.categories[1]?.stats[0]?.displayValue || '0'}
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     );
   })
 )
 
-export default TeamRoster
+export default TeamsRoster

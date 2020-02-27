@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 
 import { staticPath } from '../utils/index'
 
@@ -22,7 +23,7 @@ const Layout: React.FunctionComponent<LayoutComponent> = ({ children, title = 'E
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     </Head>
     <header>
-      <h1><img src={`${staticPath}/logo.svg`} alt="English Premier League" /></h1>
+      <h1><Link href='/'><a><img src={`${staticPath}/logo.svg`} alt="English Premier League" /></a></Link></h1>
       <Navigation />
     </header>
     {children}

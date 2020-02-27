@@ -8,7 +8,7 @@ interface PageTitleComponent {
 
 const PageTitle: React.FunctionComponent<PageTitleComponent> = ({ html }) => {
   return (
-    <Typography variant="h5" component={'h2'} gutterBottom>{ html }</Typography>
+    <Typography variant="h5" component={'h2'} gutterBottom style={{ fontSize: 0 }}>{ html }</Typography>
   )
 }
 

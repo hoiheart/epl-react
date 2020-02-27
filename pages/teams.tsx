@@ -7,7 +7,7 @@ import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
 
 import Layout from '../components/Layout'
-import PageTitle from '../components/PageTitle'
+import PageTitle from '../components/pageTitle'
 import TeamsNav from '../components/teams/nav'
 import TeamsInfo from '../components/teams/info'
 import TeamsRoster from '../components/teams/roster'
@@ -73,4 +73,4 @@ Teams.getInitialProps = async () => {
   }
 }
 
-export default Teams;
+export default Teams
