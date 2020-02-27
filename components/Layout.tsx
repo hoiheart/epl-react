@@ -1,6 +1,9 @@
 import * as React from 'react'
-import Link from 'next/link'
 import Head from 'next/head'
+
+import { staticPath } from '../utils/index'
+
+import Navigation from './navigation'
 
 import '../scss/style.scss'
 
@@ -9,7 +12,7 @@ interface LayoutComponent {
 }
 
 const Layout: React.FunctionComponent<LayoutComponent> = ({ children, title = 'English Premier League' }) => (
-  <div>
+  <>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -18,16 +21,11 @@ const Layout: React.FunctionComponent<LayoutComponent> = ({ children, title = 'E
       <meta property="og:title" content={title} />
     </Head>
     <header>
-      <h1>English Premier League</h1>
-      <nav>
-        <Link href='/'><a>Home</a></Link>
-        <Link href='/teams'><a>Teams</a></Link>
-        <Link href='/fixtures'><a>Fixtures</a></Link>
-        <Link href='/stats'><a>Stats</a></Link>
-      </nav>
+      <h1><img src={`${staticPath}/logo.svg`} alt="English Premier League" /></h1>
+      <Navigation />
     </header>
     {children}
-  </div>
+  </>
 )
 
 export default Layout
