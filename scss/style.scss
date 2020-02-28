@@ -1,18 +1,16 @@
+$primary-color: #0d47a1;
+
 body {
   margin: 0;
 }
 
-#__next {
-  padding: 20px 15px;
-}
-
 a {
   text-decoration: none;
-  color: #0d47a1;
+  color: $primary-color;
 }
 
 h1 {
-  margin: 0 0 30px;
+  margin: 20px 0;
   text-align: center;
   img {
     height: 50px;
@@ -20,9 +18,27 @@ h1 {
 }
 
 nav {
-  position: absolute;
-  left: 0;
-  top: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  a {
+    transition: 1s;
+    flex: 0 0 25%;
+    padding: 10px 0;
+    background-color: #1e88e5;
+    text-align: center;
+    color: #fff;
+    &.active {
+      background-color: #1976d2;
+    }
+  }
+}
+
+main {
+  padding: 20px 15px;
 }
 
 .teams-nav {
@@ -35,6 +51,7 @@ nav {
     font-size: 0;
   }
   a {
+    display: block;
     transition: 0.3s;
     transform: scale(0.8);
     opacity: 0.5;
@@ -71,12 +88,7 @@ nav {
 
 .fixtures-list {
   margin-top: 30px;
-  ul, li {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-  li {
+  .match {
     display: flex;
     justify-content: center;
     .team {
@@ -100,6 +112,7 @@ nav {
     }
     .away {
       justify-content: flex-start;
+      text-align: left;
     }
   }
 }
@@ -107,6 +120,9 @@ nav {
 .stats {
   .stat {
     margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
 
@@ -123,7 +139,7 @@ nav {
     }
     td.name {
       text-align: left;
-      color: #0d47a1;
+      color: $primary-color;
       font-weight: 600;
       a {
         display: flex;

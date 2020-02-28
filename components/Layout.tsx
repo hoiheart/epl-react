@@ -24,9 +24,11 @@ const Layout: React.FunctionComponent<LayoutComponent> = ({ children, title = 'E
     </Head>
     <header>
       <h1><Link href='/'><a><img src={`${staticPath}/logo.svg`} alt="English Premier League" /></a></Link></h1>
-      <Navigation />
     </header>
-    {children}
+    <Navigation />
+    <main>
+      {children}
+    </main>
   </>
 )
 

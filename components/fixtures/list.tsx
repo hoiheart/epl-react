@@ -1,6 +1,13 @@
 import * as React from 'react'
 import Link from 'next/link'
 
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
+
 interface FixturesListComponent {
   fixtures: {
     events?: Fixture[]
@@ -8,14 +15,29 @@ interface FixturesListComponent {
 }
 
 interface Fixture {
-  
+  id: string,
+  competitions: {
+    competitors: {
+      team: {
+        id: string,
+        name: string
+      },
+      score: string
+    }[]
+  }[]
 }
 
 const FixturesList: React.FunctionComponent<FixturesListComponent> = ({ fixtures }) => {
   return (
     <div className="fixtures-list">
       {fixtures.events ?
-        <ul>{fixtures.events.map((fixture) => renderFixturesList({ fixture }))}</ul> :
+        <TableContainer component={Paper}>
+          <Table>
+            <TableBody>
+              {fixtures.events.map((fixture: Fixture) => renderFixturesList({ fixture }))}
+            </TableBody>
+          </Table>
+        </TableContainer> :
         <p className="empty">no matches</p>
       }
     </div>
@@ -23,10 +45,14 @@ const FixturesList: React.FunctionComponent<FixturesListComponent> = ({ fixtures
 }
 
 const renderFixturesList = ({ fixture }) => (
-  <li key={fixture.id}>
-    {renderHomeTeam({ info: fixture.competitions[0].competitors[0]})}
-    {renderAwayTeam({ info: fixture.competitions[0].competitors[1]})}
-  </li>
+  <TableRow key={fixture.id}>
+    <TableCell>
+      <div className="match">
+        {renderHomeTeam({ info: fixture.competitions[0].competitors[0]})}
+        {renderAwayTeam({ info: fixture.competitions[0].competitors[1]})}
+      </div>
+    </TableCell>
+  </TableRow>
 )
 
 const renderHomeTeam = ({ info }) => (
@@ -44,3 +70,5 @@ const renderAwayTeam = ({ info }) => (
 )
 
 export default FixturesList
+
+export { Fixture }
