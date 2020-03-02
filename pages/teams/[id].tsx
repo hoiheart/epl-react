@@ -3,10 +3,10 @@ import { NextPage } from 'next'
 import { Team } from '../../components/teams/info'
 
 import * as React from 'react'
+import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../../utils/index'
 
-import Layout from '../../components/Layout'
 import PageTitle from '../../components/pageTitle'
 import TeamsNav from '../../components/teams/nav'
 import TeamsInfo from '../../components/teams/info'
@@ -20,7 +20,11 @@ interface TeamsPage {
 
 const Teams: NextPage<TeamsPage> = ({ teams, team, roster }) => {
   return (
-    <Layout title="Teams | English Premier League">
+    <>
+      <Head>
+        <title>Teams | English Premier League</title>
+        <meta property="og:title" content="Teams | English Premier League" />
+      </Head>
       <PageTitle html={'Teams'} />
       <TeamsNav teams={ teams } />
       {team.id ?
@@ -30,7 +34,7 @@ const Teams: NextPage<TeamsPage> = ({ teams, team, roster }) => {
         </> :
         <p className="empty">no data</p>
       }
-    </Layout>
+    </>
   )
 }
 

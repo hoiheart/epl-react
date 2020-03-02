@@ -8,18 +8,14 @@ import Navigation from './navigation'
 
 import '../scss/style.scss'
 
-interface LayoutComponent {
-  title: string
-}
-
-const Layout: React.FunctionComponent<LayoutComponent> = ({ children, title = 'English Premier League' }) => (
+const Layout: React.FunctionComponent = ({ children }) => (
   <>
     <Head>
-      <title>{title}</title>
+      <title>English Premier League</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="robots" content="index,follow" />
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content="English Premier League" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     </Head>
     <header>

@@ -5,7 +5,6 @@ import * as React from 'react'
 import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
 
-import Layout from '../components/Layout'
 import PageTitle from '../components/pageTitle'
 import StandingsList from '../components/standings/list'
 
@@ -15,7 +14,7 @@ interface IndexPage {
 
 const Index: NextPage<IndexPage> = ({ standings }) => {
   return (
-    <Layout title='Home | English Premier League'>
+    <>
       <PageTitle html={'Standings'} />
       <div className='standings'>
         {standings.length ?
@@ -23,7 +22,7 @@ const Index: NextPage<IndexPage> = ({ standings }) => {
           <p className="empty">no data</p>
         }
       </div>
-    </Layout>
+    </>
   )
 }
 

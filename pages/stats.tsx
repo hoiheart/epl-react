@@ -2,10 +2,10 @@
 import { NextPage } from 'next'
 
 import * as React from 'react'
+import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import { staticPath } from '../utils/index'
 
-import Layout from '../components/Layout'
 import PageTitle from '../components/pageTitle'
 
 import Table from '@material-ui/core/Table'
@@ -38,7 +38,11 @@ interface Player {
 
 const Stats: NextPage<StatsPage> = ({ stats }) => {
   return (
-    <Layout title="Stats | English Premier League">
+    <>
+      <Head>
+        <title>Stats | English Premier League</title>
+        <meta property="og:title" content="Fixtures | English Premier League" />
+      </Head>
       <PageTitle html={'Stats'} />
       <div className="stats">
         {stats.length ?
@@ -46,7 +50,7 @@ const Stats: NextPage<StatsPage> = ({ stats }) => {
           <p className="empty">no data</p>
         }
       </div>
-    </Layout>
+    </>
   )
 }
 

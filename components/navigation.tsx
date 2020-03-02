@@ -12,24 +12,19 @@ const Navigation: React.FunctionComponent = () => {
 
   return (
     <nav>
-      <ActiveLink href='/'>Home</ActiveLink>
-      <ActiveLink href='/teams'>Teams</ActiveLink>
-      <ActiveLink href='/fixtures'>Fixtures</ActiveLink>
-      <ActiveLink href='/stats'>Stats</ActiveLink>
+      <Link href='/'>
+        <a className={ matchActive('/') ? 'active' : '' }>Home</a>
+      </Link>
+      <Link href={`/teams/[id]`} as={`/teams/349`}>
+        <a className={ matchActive('/teams/[id]') ? 'active' : '' }>Teams</a>
+      </Link>
+      <Link href='/fixtures'>
+        <a className={ matchActive('/fixtures') ? 'active' : '' }>Fixtures</a>
+      </Link>
+      <Link href='/stats'>
+        <a className={ matchActive('/stats') ? 'active' : '' }>Stats</a>
+      </Link>
     </nav>
-  )
-}
-
-function ActiveLink({ children, href }) {
-  const router = useRouter()
-  const depth1 = `/${router.pathname.split('/')[1] || ''}`
-
-  return (
-    <Link href={href}>
-      <a href={href} className={ depth1 === href ? 'active' : '' }>
-        {children}
-      </a>
-    </Link>
   )
 }
 
