@@ -31,7 +31,12 @@ Fixtures.getInitialProps = async ({ query }) => {
 
   const fixtures = await (async () => {
     try {
-      const result = await fetch(`${staticPath}/data/fixtures/${date}.json`);
+      const fixturesList = await fetch(`${staticPath}/data/fixtures/fixtures.json`)
+      const fixturesData = await fixturesList.json()
+
+      if (!fixturesData.includes(date)) return {}
+
+      const result = await fetch(`${staticPath}/data/fixtures/${date}.json`)
       const data = await result.json()
 
       return data || {}

@@ -24,7 +24,10 @@ const Teams: NextPage<TeamsPage> = ({ teams, team, roster }) => {
       <PageTitle html={'Teams'} />
       <TeamsNav teams={ teams } />
       {team.id ?
-        <TeamsInfo team={ team } /> :
+        <>
+          <TeamsInfo team={ team } />
+          <TeamsRoster roster={ roster } />
+        </> :
         <p className="empty">no data</p>
       }
       <TeamsRoster roster={ roster } />

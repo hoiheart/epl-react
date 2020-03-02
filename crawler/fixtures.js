@@ -10,6 +10,10 @@ const fs = require('fs');
     await page.goto('http://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?calendar=blacklist')
     await page.content()
     const json = await page.evaluate(() => JSON.parse(document.querySelector('body').innerText))
+
+    await fs.mkdirSync('./public/static/data/fixtures/', { recursive: true })
+    await fs.writeFileSync(`./public/static/data/fixtures/fixtures.json`, JSON.stringify(json.leagues[0].calendar.map(v => v.substring(0, 10).replace(/-/gi, ''))))
+
     const calendar = Object.assign({}, json.leagues[0].calendar)
 
     for (const key in calendar) {
