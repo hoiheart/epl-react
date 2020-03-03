@@ -1,7 +1,5 @@
 # EPL-React
 
-> **🚧 현재 진행중 프로젝트**
-
 URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 
 * EPL Data를 활용한 토이 프로젝트
@@ -16,7 +14,7 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 - [x] 스탯 메뉴
 - [x] 일정 메뉴
 - [x] 디자인
-- [ ] TDD
+- [x] TDD
 
 ## API
 [ESPN's hidden API Document](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b) 참고 및 ESPN 웹사이트 탐색을 통해 관련 API Source 수급
@@ -39,6 +37,9 @@ npm run dev
 
 # Build
 npm run build
+
+# Test
+npm run test
 
 # Production
 npm start
