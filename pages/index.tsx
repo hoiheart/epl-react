@@ -9,18 +9,17 @@ import PageTitle from '../components/pageTitle'
 import StandingsList from '../components/standings/list'
 
 interface IndexPage {
-  standings: []
+  standings: [];
 }
 
 const Index: NextPage<IndexPage> = ({ standings }) => {
   return (
     <>
-      <PageTitle html={'Standings'} />
+      <PageTitle html='Standings' />
       <div className='standings'>
-        {standings.length ?
-          <StandingsList standings={standings} /> :
-          <p className="empty">no data</p>
-        }
+        {standings.length
+          ? <StandingsList standings={standings} />
+          : <p className='empty'>no data</p>}
       </div>
     </>
   )

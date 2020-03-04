@@ -12,8 +12,8 @@ import FixturesNav from '../components/fixtures/nav'
 import FixturesList from '../components/fixtures/list'
 
 interface FixturesPage {
-  date: string,
-  fixtures: {}
+  date: string;
+  fixtures: {};
 }
 
 const Fixtures: NextPage<FixturesPage> = ({ date, fixtures }) => {
@@ -21,11 +21,11 @@ const Fixtures: NextPage<FixturesPage> = ({ date, fixtures }) => {
     <>
       <Head>
         <title>Fixtures | English Premier League</title>
-        <meta property="og:title" content="Fixtures | English Premier League" />
+        <meta property='og:title' content='Fixtures | English Premier League' />
       </Head>
-      <PageTitle html={'Fixtures'} />
-      <FixturesNav date={ date } />
-      <FixturesList fixtures={ fixtures } />
+      <PageTitle html='Fixtures' />
+      <FixturesNav date={date} />
+      <FixturesList fixtures={fixtures} />
     </>
   )
 }
@@ -52,4 +52,4 @@ Fixtures.getInitialProps = async ({ query }) => {
   return { date, fixtures }
 }
 
-export default Fixtures;
+export default Fixtures

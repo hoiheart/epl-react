@@ -13,16 +13,16 @@ const Navigation: React.FunctionComponent = () => {
   return (
     <nav>
       <Link href='/'>
-        <a className={ matchActive('/') ? 'active' : '' }>Home</a>
+        <a className={matchActive('/') ? 'active' : ''}>Home</a>
       </Link>
-      <Link href={`/teams/[id]`} as={`/teams/349`}>
-        <a className={ matchActive('/teams/[id]') ? 'active' : '' }>Teams</a>
+      <Link href='/teams/[id]' as='/teams/349'>
+        <a className={matchActive('/teams/[id]') ? 'active' : ''}>Teams</a>
       </Link>
       <Link href='/fixtures'>
-        <a className={ matchActive('/fixtures') ? 'active' : '' }>Fixtures</a>
+        <a className={matchActive('/fixtures') ? 'active' : ''}>Fixtures</a>
       </Link>
       <Link href='/stats'>
-        <a className={ matchActive('/stats') ? 'active' : '' }>Stats</a>
+        <a className={matchActive('/stats') ? 'active' : ''}>Stats</a>
       </Link>
     </nav>
   )

@@ -15,6 +15,7 @@ URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 - [x] 일정 메뉴
 - [x] 디자인
 - [x] TDD
+- [x] Lint
 
 ## API
 [ESPN's hidden API Document](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b) 참고 및 ESPN 웹사이트 탐색을 통해 관련 API Source 수급

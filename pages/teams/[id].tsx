@@ -13,9 +13,9 @@ import TeamsInfo from '../../components/teams/info'
 import TeamsRoster from '../../components/teams/roster'
 
 interface TeamsPage {
-  teams: [],
-  team: Team,
-  roster: []
+  teams: [];
+  team: Team;
+  roster: [];
 }
 
 const Teams: NextPage<TeamsPage> = ({ teams, team, roster }) => {
@@ -41,7 +41,7 @@ const Teams: NextPage<TeamsPage> = ({ teams, team, roster }) => {
 Teams.getInitialProps = async (props) => {
   const teams = await (async () => {
     try {
-      const result = await fetch(`${staticPath}/data/teams/teams.json`);
+      const result = await fetch(`${staticPath}/data/teams/teams.json`)
       const data = await result.json()
 
       return data.sports[0]?.leagues[0]?.teams || []
@@ -52,7 +52,7 @@ Teams.getInitialProps = async (props) => {
 
   const team = await (async () => {
     try {
-      const result = await fetch(`${staticPath}/data/teams/${props.query.id}.json`);
+      const result = await fetch(`${staticPath}/data/teams/${props.query.id}.json`)
       const data = await result.json()
 
       return data.team || {}
@@ -63,7 +63,7 @@ Teams.getInitialProps = async (props) => {
 
   const roster = await (async () => {
     try {
-      const result = await fetch(`${staticPath}/data/rosters/${props.query.id}.json`);
+      const result = await fetch(`${staticPath}/data/rosters/${props.query.id}.json`)
       const data = await result.json()
 
       return data.athletes || []
@@ -79,4 +79,4 @@ Teams.getInitialProps = async (props) => {
   }
 }
 
-export default Teams;
+export default Teams

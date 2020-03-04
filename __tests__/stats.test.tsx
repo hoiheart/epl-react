@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import Stats from '../pages/stats'
 
 describe('API 정상 호출시', () => {
-  const stats = require(`../public/static/data/statistics/statistics.json`).stats
+  const stats = require('../public/static/data/statistics/statistics.json').stats
 
   test('타이틀이 Stats로 노출된다.', () => {
     const { container } = render(<Stats stats={stats} />)

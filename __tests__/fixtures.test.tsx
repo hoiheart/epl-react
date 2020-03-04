@@ -4,7 +4,7 @@ import Fixtures from '../pages/fixtures'
 
 describe('API 정상 호출시', () => {
   const date = '20200307'
-  const fixtures = require(`../public/static/data/fixtures/20200307.json`)
+  const fixtures = require('../public/static/data/fixtures/20200307.json')
 
   test('타이틀이 Fixtures로 노출된다.', () => {
     const { container } = render(<Fixtures date={date} fixtures={fixtures} />)

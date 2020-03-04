@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import Index from '../pages/index'
 
 describe('API 정상 호출시', () => {
-  const standings = require(`../public/static/data/standings/standings.json`).children[0]?.standings?.entries
+  const standings = require('../public/static/data/standings/standings.json').children[0]?.standings?.entries
 
   test('타이틀이 Standings로 노출된다.', () => {
     const { container } = render(<Index standings={standings} />)
