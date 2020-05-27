@@ -29,7 +29,7 @@ interface Fixture {
 
 const FixturesList: React.FunctionComponent<FixturesListComponent> = ({ fixtures }) => {
   return (
-    <div className='fixtures-list'>\
+    <div className='fixtures-list'>
       {fixtures.events ? renderFixturesList({ fixtures }) : <p className='empty'>no matches</p>}
     </div>
   )
