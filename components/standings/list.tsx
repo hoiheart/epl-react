@@ -60,7 +60,7 @@ const StandingsList: React.FunctionComponent<StandingsListComponent> = ({ standi
 const renderStandingsList = ({ standings }) => (
   standings.map((entry: StandinsEntry, index) => (
     <TableRow key={index} style={{ backgroundColor: entry.note?.color }}>
-      <TableCell className='rank'>{entry.stats[7]?.displayValue}</TableCell>
+      <TableCell className='rank'>{entry.stats[8]?.displayValue}</TableCell>
       <TableCell className='name'>
         <Link href='/teams/[id]' as={`/teams/${entry.team?.id}`}>
           <a>
