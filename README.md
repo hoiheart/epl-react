@@ -2,9 +2,11 @@
 
 URL : [https://epl-react.herokuapp.com](https://epl-react.herokuapp.com)
 
+> Heroku 무료 서버는 주기적으로 sleep 되므로 접속에 시간이 걸릴 수 있음
+
 * EPL Data를 활용한 토이 프로젝트
 * Typescript + React 스터디를 목적으로 SSR 및 배포 자동화를 위해 NextJS + Heroku 조합으로 구현
-* Github Actions를 통한 크롤링 스케쥴화 (주 1회)
+* Github Actions를 통한 크롤링 스케쥴화 (disabled)
 
 ## Work List
 - [x] 기술셋 픽스 및 환경 세팅
